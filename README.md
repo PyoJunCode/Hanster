@@ -5,6 +5,7 @@
 + qna.dart 임시 이식완료.
   구글로그인 -> qna페이지 firebase 데이터 연동까지.
 + pubspec.yaml에 modal_progress_hud Package추가. (돌아가는 로딩 표시)
++ 통째로 안받고 라이브러리만 받을거면 json파일 교체하고 pubspec에 패키지 하나 추가해야함 !
 
 
 
