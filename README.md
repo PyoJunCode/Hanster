@@ -1,7 +1,8 @@
 # hanster_app
 
 10/12
-+ root.dart, login.dart, checkID.dart, front.dart, qna.dart 임시 이식완료.
++ root.dart, login.dart, checkID.dart, front.dart 추가.
++ qna.dart 임시 이식완료.
   구글로그인 -> qna페이지 firebase 데이터 연동까지.
 + pubspec.yaml에 modal_progress_hud Package추가. (돌아가는 로딩 표시)
 
@@ -26,6 +27,6 @@ body를 wrap new widget 해서 ModalProgressHUD로 감싼다.
 
 ModalProgressHUD 괄호 끝나기 전에 inAsyncCall: loading(bool 변수명), ); 으로 추가해준다.
 
-Future - async 함수 제일 마지막에 setState로 다시 loading = false; 로 바꿔준다. (동작완료)
-
+Future - async 함수 제일 마지막에 setState로 다시 loading = false; 로 바꿔준다. (로딩완료)
+(이미지 예시):
 <img width="346" alt="스크린샷 2019-10-12 오전 3 34 24" src="https://user-images.githubusercontent.com/47979730/66675883-3c798f00-eca1-11e9-9274-3a5e0acf6398.png">
