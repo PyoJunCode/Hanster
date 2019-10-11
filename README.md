@@ -1,6 +1,6 @@
 # hanster_app
 
-10/12
+## **10/12**
 + root.dart, login.dart, checkID.dart, front.dart 추가.
 + qna.dart 임시 이식완료.
   구글로그인 -> qna페이지 firebase 데이터 연동까지.
@@ -8,9 +8,9 @@
 
 
 
-## Notice
+# Notice
 
-10/12
+## **10/12**
 - modal_progress_hud Package 
 Future - async 처럼 대기가필요한 동작에서 로딩바를 표시해줌. 
 
