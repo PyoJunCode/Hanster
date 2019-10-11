@@ -3,7 +3,9 @@
 ## **10/12**
 + root.dart, login.dart, checkID.dart, front.dart 추가.
 + qna.dart 임시 이식완료.
-  구글로그인 -> qna페이지 firebase 데이터 연동까지.
+  구글로그인 -> qna페이지 firebase 데이터 연동까지. (아직 디자인은 프레임만,)
+  <img width="200" alt="스크린샷 2019-10-12 오전 3 44 51" src="https://user-images.githubusercontent.com/47979730/66676543-b78f7500-eca2-11e9-859a-91c8cd418acd.png">
+
 + pubspec.yaml에 modal_progress_hud Package추가. (돌아가는 로딩 표시)
 + 통째로 안받고 라이브러리만 받을거면 json파일 교체하고 pubspec에 패키지 하나 추가해야함 !
 
@@ -30,4 +32,4 @@ ModalProgressHUD 괄호 끝나기 전에 inAsyncCall: loading(bool 변수명), )
 
 Future - async 함수 제일 마지막에 setState로 다시 loading = false; 로 바꿔준다. (로딩완료)
 (이미지 예시):
-<img width="346" alt="스크린샷 2019-10-12 오전 3 34 24" src="https://user-images.githubusercontent.com/47979730/66675883-3c798f00-eca1-11e9-9274-3a5e0acf6398.png">
+<img width="200" alt="스크린샷 2019-10-12 오전 3 34 24" src="https://user-images.githubusercontent.com/47979730/66675883-3c798f00-eca1-11e9-9274-3a5e0acf6398.png">
