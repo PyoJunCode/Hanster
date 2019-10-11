@@ -1,0 +1,72 @@
+{
+  "project_info": {
+    "project_number": "377253590295",
+    "firebase_url": "https://hanster-5aba7.firebaseio.com",
+    "project_id": "hanster-5aba7",
+    "storage_bucket": "hanster-5aba7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377253590295:android:f156cf7fa9902c3a933352",
+        "android_client_info": {
+          "package_name": "com.example.hanster_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "377253590295-2r2k6te47110d13afuuh4rk7usdeug64.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hanster_app",
+            "certificate_hash": "108c4f042aa2c40719dd67c24a8a2280674efe55"
+          }
+        },
+        {
+          "client_id": "377253590295-59mrs670ote9f32qklv244bo9f4pndv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hanster_app",
+            "certificate_hash": "d273adbb6995c8e81b9ab541ac00e12d4053e080"
+          }
+        },
+        {
+          "client_id": "377253590295-5b8uuaphu3qjh9f8pdo20fsr6acnnj17.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hanster_app",
+            "certificate_hash": "3f82b352fed6e58e0f275b347fb6069009d21e05"
+          }
+        },
+        {
+          "client_id": "377253590295-hrsp4jagnmtq1np4htpiledifrg2rkkf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hanster_app",
+            "certificate_hash": "686eeb4ffb3f3b4d545711584a6adc1fbbb151b1"
+          }
+        },
+        {
+          "client_id": "377253590295-4pdmnhe0rup5qf8thpel311t14k631ci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1cM3P5MkcI8k8JH_tRTtSiW6NGy6NLgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "377253590295-4pdmnhe0rup5qf8thpel311t14k631ci.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
