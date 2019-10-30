@@ -5,8 +5,6 @@ import 'package:hanster_app/checkID.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 
-
-
 // ignore: camel_case_types
 class loginPage extends StatefulWidget {
 
@@ -58,14 +56,14 @@ class _loginPageState extends State<loginPage> {
               height: 130,
               color: const Color(0xFFffffff),
               child: Text(
-                  '한스', textAlign: TextAlign.center,style: TextStyle(fontSize: 88,
+                  '한스터', textAlign: TextAlign.center,style: TextStyle(fontSize: 88,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFFfdbad0))
               ),
             ),
 
             Padding(padding: const EdgeInsets.all(5)),
-            Text('한   동   에   서   의   공  부   추   구', style: TextStyle(fontSize: 16,
+            Text('한   동   에   서   의   공   부   추   구', style: TextStyle(fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xFFffffff)),),
 

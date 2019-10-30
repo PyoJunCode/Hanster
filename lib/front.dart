@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hanster_app/qna.dart';
+import 'package:hanster_app/web.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 
@@ -27,7 +28,8 @@ class _frontPageState extends State<frontPage> {
     super.initState();
     pages = [
 
-      qnaPage()
+      qnaPage(),
+      webPage(widget.user)
 
     ];
   }
@@ -41,7 +43,7 @@ class _frontPageState extends State<frontPage> {
           currentIndex: menu_select,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.question_answer), title: Text('QnA')),
-            BottomNavigationBarItem(icon: Icon(Icons.signal_wifi_4_bar), title: Text('Signal')),
+            BottomNavigationBarItem(icon: Icon(Icons.signal_wifi_4_bar), title: Text('Web')),
             BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text('My Info')),
           ]),
     );
