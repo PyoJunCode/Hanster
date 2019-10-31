@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hanster_app/front.dart';
 import 'package:hanster_app/login.dart';
+import 'package:hanster_app/qnaSubject.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 //입장하기, 로그아웃 페이지
@@ -78,7 +78,7 @@ class checkPage extends StatelessWidget {
                             checkAuth();
 
                             Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => frontPage(user)));
+                                builder: (context) => qnaSubjectPage(user)));
 
 //              if(first == false) {
 //                Navigator.pushReplacement(context, MaterialPageRoute(
