@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hanster_app/login.dart';
 import 'package:hanster_app/qna.dart';
 import 'dart:convert';
 import 'package:http/http.dart';
@@ -110,7 +111,7 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
                     color: Colors.white,
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => qnaPage(widget.user, selectedClass)));
+                        builder: (context) => loginPage()));
                   },)
               ),
               Padding(padding: EdgeInsets.only(left: 25.0),),

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +19,7 @@ class _loginPageState extends State<loginPage> {
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth auth = FirebaseAuth.instance;
   final textEditingController = TextEditingController();
+  final FirebaseUser user = null;
 
   bool loading = false;
 
@@ -30,7 +32,7 @@ class _loginPageState extends State<loginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFfdbad0),
+      backgroundColor: const Color(0xFF333345),
       body: buildBody(),
     );
   }
@@ -38,6 +40,28 @@ class _loginPageState extends State<loginPage> {
   buildBody(){
 
     String mail;
+
+    setState(() {
+      loading = true;
+
+    });
+
+    SignInMathod().then((user) {
+      mail= user.email.split('@')[1];
+
+      if(mail == 'handong.edu') {
+
+        Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) => checkPage(user)));
+      }
+      else{
+        handong(context);
+        FirebaseAuth.instance.signOut();
+        googleSignIn.signOut();
+      }
+    });
+
+
 
     return ModalProgressHUD(
       child: Center(child: SingleChildScrollView(
@@ -58,7 +82,7 @@ class _loginPageState extends State<loginPage> {
               child: Text(
                   '한스터', textAlign: TextAlign.center,style: TextStyle(fontSize: 88,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFFfdbad0))
+                  color: const Color(0xFF333345))
               ),
             ),
 
@@ -69,35 +93,6 @@ class _loginPageState extends State<loginPage> {
 
             Padding(padding: const EdgeInsets.all(60)),
 
-            Center(
-              child: new IconButton(
-                icon: Icon(Icons.power_settings_new,
-                  size: 40,
-                  color: const Color(0xFFffffff),),
-
-                onPressed: () {
-
-                  setState(() {
-                    loading = true;
-
-                  });
-
-                  SignInMathod().then((user) {
-                    mail= user.email.split('@')[1];
-
-                    if(mail == 'handong.edu') {
-                      Navigator.pushReplacement(context, MaterialPageRoute(
-                          builder: (context) => checkPage(user)));
-                    }
-                    else{
-                      handong(context);
-                      FirebaseAuth.instance.signOut();
-                      googleSignIn.signOut();
-                    }
-                  });
-                },
-              ),
-            ),
             Padding(padding: const EdgeInsets.all(17)),
             Text('이젠 네가 시작해봐!', style: TextStyle(fontSize: 15,
                 fontWeight: FontWeight.bold,color: const Color(0xFFffffff))),
@@ -121,6 +116,8 @@ class _loginPageState extends State<loginPage> {
 
     return user;
   }
+
+
 
 }
 

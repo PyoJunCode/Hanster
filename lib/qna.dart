@@ -63,9 +63,12 @@ class _qnaPageState extends State<qnaPage> {
                     },)
               ),
               Padding(padding: EdgeInsets.only(left: 25.0),),
-              Text(widget.subjectName, style: TextStyle(color: Color(0xFF333345),
-                  fontSize: 23.0,
-                  fontWeight: FontWeight.w600))
+              Container(
+                width: 250,
+                child: Text(widget.subjectName, style: TextStyle(color: Color(0xFF333345),
+                    fontSize: 23.0,
+                    fontWeight: FontWeight.w600)),
+              )
             ],
           ),
           Expanded(

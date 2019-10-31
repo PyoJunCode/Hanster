@@ -6,7 +6,6 @@ import 'package:hanster_app/login.dart';
 import 'package:hanster_app/qnaSubject.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-//입장하기, 로그아웃 페이지
 
 class checkPage extends StatelessWidget {
 
@@ -21,17 +20,10 @@ class checkPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ModalProgressHUD(
       child: Scaffold(
-        //backgroundColor: const Color(0xFFfcf3f6),
-          appBar: AppBar(
-              centerTitle: true,
-              title: Text('Welcome',style: TextStyle(fontSize: 20, color: Colors.grey),)
-          ),
 
-          /*
-        * Text('HMC', style: TextStyle(fontSize: 100,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFFff76b9)),),
-              */
+          backgroundColor: const  Color(0xFF97AFB9),
+
+
 
           body: Padding(padding: EdgeInsets.all(63),
             child: SingleChildScrollView(
@@ -39,34 +31,32 @@ class checkPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Text('안녕하세요', style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: const Color(0xFFfd9dbd)),),
+                    Text('안녕하세요', style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color:Colors.white),),
                     Padding(padding: const EdgeInsets.all(3)),
-                    Text('한만추에 오신 것을 환영합니다.', style: TextStyle(fontSize: 20, color: Colors.grey),),
+
                     Padding(padding: const EdgeInsets.all(12)),
-                    SizedBox(
-                      width: 230,
-                      height: 230,
-                      child: Card(
-                        elevation: 4.0,
-                        child: Padding(padding: EdgeInsets.all(8),
+
+                    Padding(padding: EdgeInsets.all(8),
                           child: Column(
                               children: <Widget>[
                                 Padding(padding: EdgeInsets.all(20)),
                                 SizedBox(
                                   width: 90,
                                   height: 90,
-                                  child: CircleAvatar(
-                                    backgroundImage: NetworkImage(user.photoUrl),
+                                  child: Container(
+                                    child: CircleAvatar(
+                                      backgroundImage: NetworkImage(user.photoUrl),
+                                    ),
                                   ),
                                 ),
                                 Padding(padding: EdgeInsets.all(10),),
                                 Text(user.displayName+' 님',
-                                    style: TextStyle(fontSize: 20)),
+                                    style: TextStyle(fontSize: 20, color: Colors.white)),
                               ]
                           ),
                         ),
-                      ),
-                    ),
+
+
                     Padding(padding: EdgeInsets.all(17),),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -89,8 +79,8 @@ class checkPage extends StatelessWidget {
 //              }
 
 
-                          }, color: const Color(0xFFf9c8d9),
-                            child: Text('입장하기', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFffffff)),),
+                          }, color: const Color(0xFF333345),
+                            child: Text('공부하기', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFffffff)),),
                           ),
                           Padding(padding: EdgeInsets.all(3)),
                           RaisedButton(onPressed: () {
@@ -100,7 +90,7 @@ class checkPage extends StatelessWidget {
                                 builder: (context) => loginPage()));
 
                           },
-                            color: const Color(0xFFf9c8d9),
+                            color: const Color(0xFF333345),
                             child: Text('로그아웃', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFffffff)),),)
                         ]
                     ),
