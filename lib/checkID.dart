@@ -79,7 +79,7 @@ class checkPage extends StatelessWidget {
 //              }
 
 
-                          }, color: const Color(0xFF333345),
+                          }, color: const Color(0xFF535360),
                             child: Text('공부하기', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFffffff)),),
                           ),
                           Padding(padding: EdgeInsets.all(3)),
@@ -90,7 +90,7 @@ class checkPage extends StatelessWidget {
                                 builder: (context) => loginPage()));
 
                           },
-                            color: const Color(0xFF333345),
+                            color: const Color(0xFF535360),
                             child: Text('로그아웃', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFffffff)),),)
                         ]
                     ),

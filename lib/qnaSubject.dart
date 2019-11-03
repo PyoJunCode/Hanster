@@ -38,7 +38,7 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
 
         //appBar: buildAppBar(),
 
-        backgroundColor: const  Color(0xFF97AFB9),
+        backgroundColor: const  Color(0xFF9DC8C8),
 
         body : buildbody()
 
@@ -67,6 +67,9 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
 
      setState(() {
        for(Dom.Element ele  in links){
+         if(ele.text.contains('공동') || ele.text.contains('채플'))
+           continue;
+
          parseLinks.add(ele.text);
        }
      });
@@ -96,7 +99,7 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
 
                   margin: EdgeInsets.only(left: 25.0),
                   decoration: BoxDecoration(
-                      color: Color(0xFF333345),
+                      color: Color(0xFF333344),
                       shape: BoxShape.circle,
                       //borderRadius: BorderRadius.circular(8.0),
                       boxShadow: <BoxShadow>[
@@ -115,15 +118,43 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
                   },)
               ),
               Padding(padding: EdgeInsets.only(left: 25.0),),
-              Text('과목선택', style: TextStyle(color: Color(0xFF333345),
+              Text('QnA', style: TextStyle(color: Color(0xFF333344),
                 fontSize: 23.0,
-                fontWeight: FontWeight.w600))
+                fontWeight: FontWeight.w600)),
+              Padding(padding: EdgeInsets.only(left:170.0)),
+              Container(
+
+                  margin: EdgeInsets.only(left: 25.0),
+                  decoration: BoxDecoration(
+                      color: Color(0xFF333344),
+                      shape: BoxShape.circle,
+                      //borderRadius: BorderRadius.circular(8.0),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 10.0,
+                          offset: Offset(0.0, 10.0),
+                        )
+                      ]
+                  ),
+                  child: IconButton(icon: Icon(Icons.toc),
+                    color: Colors.white,
+                    onPressed: (){
+
+                    },)
+              ),
+
+
             ],
           ),
 
+          Text('과목선택', style: TextStyle(color: Color(0xFFFF333344),
+    fontSize: 23.0,
+    fontWeight: FontWeight.w600)),
+
           Expanded(
             child: Container(
-                color:  Color(0xFF97AFB9),
+                color:  Color(0xFF9DC8C8),
                 child:  CustomScrollView(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: false,
@@ -189,30 +220,41 @@ class SubjectRow extends StatelessWidget{
         fontWeight: FontWeight.w600
     );
 
-    final subjectCardContent = new Container(
-      margin: new EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-      constraints: new BoxConstraints.expand(),
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    final subjectCardContent =  Container(
+      margin:  EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+      constraints:  BoxConstraints.expand(),
+      child:  Row(
         children: <Widget>[
-
-          Container(height: 4.0),
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(subjectName, style: headerTextStyle),
-//              IconButton(icon: Icon(Icons.send),)
+
+              Container(height: 4.0),
+
+              Flexible(
+                child: Container(
+                  width: 280,
+                    child: Text(subjectName, style: headerTextStyle)),
+              ),
+
+              Container(height: 3.0),
+
+               Text(subjectCode, style: subHeaderTextStyle),
+               Container(
+                  margin:  EdgeInsets.symmetric(vertical: 2.0),
+                  height: 2.0,
+                  width: 72.0,
+                  color:  Color(0xff535360)
+              ),
+
             ],
           ),
-          new Container(height: 3.0),
-
-          new Text(subjectCode, style: subHeaderTextStyle),
-          new Container(
-              margin: new EdgeInsets.symmetric(vertical: 2.0),
-              height: 2.0,
-              width: 70.0,
-              color: new Color(0xff00c6ff)
-          ),
-
+          IconButton(icon: Icon(Icons.arrow_forward),
+            color: Colors.white,
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => qnaPage(user, subjectName)));
+            },)
         ],
       ),
     );
@@ -227,7 +269,7 @@ class SubjectRow extends StatelessWidget{
     height: 90.0,
     //margin: EdgeInsets.only(left: 46.0),
     decoration: BoxDecoration(
-      color: Color(0xFF333345),
+      color: Color(0xFF333344),
         shape: BoxShape.rectangle,
       borderRadius: BorderRadius.circular(8.0),
       boxShadow: <BoxShadow>[
