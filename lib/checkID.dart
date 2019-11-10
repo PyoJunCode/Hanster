@@ -21,7 +21,7 @@ class checkPage extends StatelessWidget {
     return ModalProgressHUD(
       child: Scaffold(
 
-          backgroundColor: const  Color(0xFF97AFB9),
+          backgroundColor: const  Color(0xFFADB7F0),
 
 
 
@@ -30,14 +30,13 @@ class checkPage extends StatelessWidget {
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('안녕하세요', style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color:Colors.white),),
-                    Padding(padding: const EdgeInsets.all(3)),
-
-                    Padding(padding: const EdgeInsets.all(12)),
-
-                    Padding(padding: EdgeInsets.all(8),
+                    Padding(padding: EdgeInsets.all(50),),
+                    Padding(padding: EdgeInsets.all(3),
                           child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Padding(padding: EdgeInsets.all(20)),
                                 SizedBox(
@@ -50,49 +49,79 @@ class checkPage extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(padding: EdgeInsets.all(10),),
-                                Text(user.displayName+' 님',
-                                    style: TextStyle(fontSize: 20, color: Colors.white)),
+                                Text('안녕하세요', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color:Colors.white),),
+                                Padding(padding: EdgeInsets.only(top: 10),),
+                                Text(user.displayName+' 님!',
+                                    style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w800), ),
                               ]
                           ),
                         ),
 
 
                     Padding(padding: EdgeInsets.all(17),),
-                    Row(
+                    Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          RaisedButton(onPressed: (){
+                          GestureDetector(
+                            onTap: (){
+                              loading = true;
+                              checkAuth();
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => qnaSubjectPage(user)));
+                            },
+                            child: Container(
 
-                            loading = true;
-
-                            checkAuth();
-
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => qnaSubjectPage(user)));
-
-//              if(first == false) {
-//                Navigator.pushReplacement(context, MaterialPageRoute(
-//                    builder: (context) => frontPage(user)));
-//              }else{
-//                Navigator.pushReplacement(context, MaterialPageRoute(
-//                    builder: (context) => MyApp(user)));
-//              }
-
-
-                          }, color: const Color(0xFF535360),
-                            child: Text('공부하기', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFffffff)),),
+                              width: 300,
+                              height: 50,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color:  Color(0xFFFFFFFF)  ,
+                                  shape: BoxShape.rectangle,
+                                  border: Border.all(color:  Color(0xFFFFFFFF), width: 2),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 3.0,
+                                      offset: Offset(0.0, 5.0),
+                                    )
+                                  ]
+                              ),
+                              child: Text('시작하기', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFF86a2ea)),),
+                            ),
                           ),
-                          Padding(padding: EdgeInsets.all(3)),
-                          RaisedButton(onPressed: () {
-                            FirebaseAuth.instance.signOut();
-                            googleSignIn.signOut();
-                            Navigator.pushReplacement(context, MaterialPageRoute(
-                                builder: (context) => loginPage()));
+                          Padding(padding: EdgeInsets.only(top: 15)),
 
-                          },
-                            color: const Color(0xFF535360),
-                            child: Text('로그아웃', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFffffff)),),)
-                        ]
+                          GestureDetector(
+                            onTap: (){
+                              FirebaseAuth.instance.signOut();
+                              googleSignIn.signOut();
+                              Navigator.pushReplacement(context, MaterialPageRoute(
+                                  builder: (context) => loginPage()));
+                            },
+                            child: Container(
+
+                              width: 300,
+                              height: 50,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color:  Color(0xFF7693E5)  ,
+                                  shape: BoxShape.rectangle,
+                                  //border: Border.all(color:  Color(0xFFFFFFFF), width: 2),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 10.0,
+                                      offset: Offset(0.0, 10.0),
+                                    )
+                                  ]
+                              ),
+                              child: Text('로그아웃', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: const Color(0xFFFFFFFF)),),
+                            ),
+                          ),
+
+              ]
                     ),
                   ],
                 ),
