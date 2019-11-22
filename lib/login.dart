@@ -64,6 +64,12 @@ class _loginPageState extends State<loginPage> {
 
 
     return ModalProgressHUD(
+//      child: Stack(
+//        alignment: Alignment.center,
+//        children: <Widget>[
+//          Image.asset('image/Startlogo.png', fit: BoxFit.contain,alignment: Alignment.center,),
+//        ],
+//      ),
       child: Center(child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:hanster_app/login.dart';
-import 'package:hanster_app/qna.dart';
+import 'package:hanster_app/qnaList.dart';
 import 'dart:convert';
 
 
@@ -148,6 +148,8 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
                 ),
                 GestureDetector(
                   onTap: (){
+                    if(selected)
+
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => qnaPage(widget.user, selectedClass)));
                   },
@@ -163,6 +165,7 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
                             color: selected? Color(0xFFF9BE06) : Color(0xFFa7a9ac),) ,
                               iconSize: 40,
                               onPressed:(){
+                            if(selected)
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => qnaPage(widget.user, selectedClass)));
                               } ),
@@ -204,9 +207,9 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
 
 
   buildAppBar() {
-    return GradientAppBar(
+    return AppBar(
       centerTitle: true,
-      title: Row(
+      title:  Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
@@ -216,29 +219,20 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
 //          Text('QnA', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
         ],
       ),
-      leading: Icon(Icons.chevron_left, color: Colors.white, size: 40,),
-      backgroundColorStart: const Color(0xFFADB7F0) ,
-      backgroundColorEnd: const Color(0xFF86a2c6),
+//          title: Text("Study Group"),
+      leading: IconButton(
+          color: Colors.white,
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: (){
+            Navigator.pop(context);
+          }),
       actions: <Widget>[
-
-
-
-
-
-           Container(
-
-              margin: EdgeInsets.only(left: 25.0),
-
-              child: IconButton(icon: Icon(Icons.toc),
-                iconSize: 40,
-                color: Colors.white,
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => loginPage()));
-                },)
-          ),
-
-
+        IconButton(
+          color: Colors.white,
+          icon: Icon(Icons.menu),
+          onPressed: ()=>{
+          },
+        ),
       ],
     );
   }

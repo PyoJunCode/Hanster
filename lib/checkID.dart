@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hanster_app/login.dart';
+import 'package:hanster_app/menu.dart';
 import 'package:hanster_app/qnaSubject.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
@@ -11,7 +12,6 @@ class checkPage extends StatelessWidget {
 
   final FirebaseUser user;
   final GoogleSignIn googleSignIn = GoogleSignIn();
-  bool first = true;
   bool loading = false;
 
   checkPage(this.user);
@@ -67,7 +67,7 @@ class checkPage extends StatelessWidget {
                               loading = true;
                               checkAuth();
                               Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context) => qnaSubjectPage(user)));
+                                  builder: (context) => menuPage(user)));
                             },
                             child: Container(
 
@@ -143,21 +143,18 @@ class checkPage extends StatelessWidget {
 
 
       if(documents.length == 0){
-        print('new auth');
-        print('setData');// 길이가 0이면 기본세팅
+
         Firestore.instance.collection('users').document(user.email.split('@')[0]).setData({
           'hakbun' : user.email.split('@')[0],
-          'name' : user.displayName,
-          'gender' : 'male'
+          'name' : user.displayName.split('학')[0],
+          'photoUrl' : user.photoUrl,
         });
 
-        first = false;
+
       }
-      first = false;
+
 
     }
-
-    else first = true;
 
     loading = false;
 
