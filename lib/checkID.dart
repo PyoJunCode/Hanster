@@ -66,7 +66,7 @@ class checkPage extends StatelessWidget {
                             onTap: (){
                               loading = true;
                               checkAuth();
-                              Navigator.push(context, MaterialPageRoute(
+                              Navigator.pushReplacement(context, MaterialPageRoute(
                                   builder: (context) => qnaSubjectPage(user)));
                             },
                             child: Container(

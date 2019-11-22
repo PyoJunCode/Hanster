@@ -27,6 +27,8 @@ class qnaSubjectPage extends StatefulWidget {
 class _qnaSubjectPageState extends State<qnaSubjectPage> {
 
   String selectedClass  ;
+  String selectedClassNum ;
+  bool selected = false;
   bool loading = true;
   List<Dom.Element> links = [];
   List<String> parseLinks = [];
@@ -38,6 +40,29 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
     super.initState();
     _makePutRequest();
   }
+
+  callback(name, num){
+
+    if(selectedClass == name) {
+      setState(() {
+        selected = !selected;
+      });
+
+      return true;
+    }
+
+      if(selected == true) return false;
+
+      else {
+        setState(() {
+          selectedClass = name;
+          selectedClassNum = num;
+          selected = !selected;
+        });
+        return true;
+      }
+    }
+
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -102,11 +127,48 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Padding(padding: EdgeInsets.only(left: 25),),
-                Text('과목을 선택해주세요', style:TextStyle(color: Color(0xFFa7a9ac),
-                    fontSize: 23.0,
-                    fontWeight: FontWeight.w600),
+                Flexible(
+                  child: Container(
+                    //width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(selected ?  selectedClass  : '과목을 선택해 주세요.'  , overflow: TextOverflow.ellipsis ,style:TextStyle(color: selected? Color(0xFF86a2ea) :Color(0xFFa7a9ac),
+                            fontSize: 23.0,
+                            fontWeight: FontWeight.w600,),
+                        ),
+                        Text(selected ?  selectedClassNum  : ' '  , overflow: TextOverflow.ellipsis ,style:
+                        TextStyle(color: Color(0xFFa7a9ac),
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                IconButton(icon: Icon(Icons.chevron_right) , iconSize: 40,  onPressed: null)
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => qnaPage(widget.user, selectedClass)));
+                  },
+                  child: Container(
+                      child: Row(
+                        children: <Widget>[
+                        Text( '다음' , overflow: TextOverflow.ellipsis ,
+                            style:TextStyle(
+                                color: selected? Color(0xFFF9BE06) :Color(0xFFa7a9ac),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800 )),
+                          IconButton(icon: Icon(Icons.chevron_right,
+                            color: selected? Color(0xFFF9BE06) : Color(0xFFa7a9ac),) ,
+                              iconSize: 40,
+                              onPressed:(){
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => qnaPage(widget.user, selectedClass)));
+                              } ),
+                        ],
+                      )),
+                )
 
               ],
             ),
@@ -123,7 +185,7 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
                       padding: const EdgeInsets.symmetric(vertical: 24.0),
                       sliver:  SliverList(
                         delegate:  SliverChildBuilderDelegate(
-                              (context, index) => SubjectRow(parseLinks[index], widget.user),
+                              (context, index) => SubjectRow(parseLinks[index], widget.user, callback),
                           childCount: parseLinks.length,
                         ),
                       ),
@@ -148,9 +210,10 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Icon(Icons.question_answer,color: Colors.yellow,size: 30,),
-          Padding(padding: EdgeInsets.only(left: 10),),
-          Text('QnA', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
+          Image.asset('assets/images/qnaLogo.png' , height: 30,),
+//          Icon(Icons.question_answer,color: Colors.yellow,size: 30,),
+//          Padding(padding: EdgeInsets.only(left: 10),),
+//          Text('QnA', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
         ],
       ),
       leading: Icon(Icons.chevron_left, color: Colors.white, size: 40,),
@@ -159,31 +222,26 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
       actions: <Widget>[
 
 
-        Container(
 
-            margin: EdgeInsets.only(left: 25.0),
 
-            child: IconButton(icon: Icon(Icons.toc),
-              iconSize: 40,
-              color: Colors.white,
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => loginPage()));
-              },)
-        ),
+
+           Container(
+
+              margin: EdgeInsets.only(left: 25.0),
+
+              child: IconButton(icon: Icon(Icons.toc),
+                iconSize: 40,
+                color: Colors.white,
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => loginPage()));
+                },)
+          ),
+
 
       ],
     );
   }
-
-  void selectSubject(string){
-    setState(() {
-      selectedClass = string;
-
-    });
-
-  }
-
 
 }
 
@@ -191,10 +249,11 @@ class _qnaSubjectPageState extends State<qnaSubjectPage> {
 
 class SubjectRow extends StatefulWidget{
 
+  final callback;
   final String subject;
   final FirebaseUser user;
 
-  SubjectRow(this.subject, this.user);
+  SubjectRow(this.subject, this.user, this.callback) ;
 
   @override
   _SubjectRowState createState() => _SubjectRowState();
@@ -255,10 +314,15 @@ class _SubjectRowState extends State<SubjectRow> {
   final subjectCard = GestureDetector(
      onTap: (){
 
-       setState(() {
-         selected = !selected;
+       if(widget.callback(subjectName,subjectCode)) {
+         setState(() {
+           //if(widget.callback() == null || widget.callback == subjectName)
+           selected = !selected;
+         });
+       }
 
-       });
+
+//          widget.callback(subjectName, subjectCode);
 
 
      },
