@@ -32,7 +32,7 @@ class _loginPageState extends State<loginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFADB7F0),
+      backgroundColor: const Color(0XFFB7C2F3),
       body: buildBody(),
     );
   }
@@ -84,12 +84,7 @@ class _loginPageState extends State<loginPage> {
             Container(
               width: 280,
               height: 130,
-              color: const Color(0xFFffffff),
-              child: Text(
-                  '한스터', textAlign: TextAlign.center,style: TextStyle(fontSize: 88,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF333345))
-              ),
+              child: Image.asset('assets/images/H_mainlo.png', scale: 0.8,),
             ),
 
             Padding(padding: const EdgeInsets.all(5)),
@@ -100,8 +95,7 @@ class _loginPageState extends State<loginPage> {
             Padding(padding: const EdgeInsets.all(60)),
 
             Padding(padding: const EdgeInsets.all(17)),
-            Text('이젠 네가 시작해봐!', style: TextStyle(fontSize: 15,
-                fontWeight: FontWeight.bold,color: const Color(0xFFffffff))),
+
           ],
         ),
       )

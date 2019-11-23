@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hanster_app/login.dart';
 import 'package:hanster_app/menu.dart';
-import 'package:hanster_app/qnaSubject.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 
@@ -43,9 +42,22 @@ class checkPage extends StatelessWidget {
                                   width: 90,
                                   height: 90,
                                   child: Container(
-                                    child: CircleAvatar(
-                                      backgroundImage: NetworkImage(user.photoUrl),
-                                    ),
+                                    child: Stack(
+                                      alignment: AlignmentDirectional.center,
+                                      children: <Widget>[
+                                        CircleAvatar(
+                                          radius: 42.0,
+                                          backgroundColor: Colors.white,
+                                        ),
+                                        CircleAvatar(
+                                          radius: 40.0,
+                                          backgroundImage: NetworkImage(user.photoUrl),
+                                        ),
+                                        Container(
+                                            alignment: Alignment.topRight,
+                                            child: Image.asset('assets/images/book.png')),
+                                      ],
+                                    )
                                   ),
                                 ),
                                 Padding(padding: EdgeInsets.all(10),),
@@ -137,14 +149,14 @@ class checkPage extends StatelessWidget {
 
       final QuerySnapshot result = await Firestore.instance
           .collection('users')
-          .where(user.email.split('@')[0])
+          .where(user.displayName.split('학')[0])
           .getDocuments();
       final List<DocumentSnapshot> documents = result.documents;
 
 
       if(documents.length == 0){
 
-        Firestore.instance.collection('users').document(user.email.split('@')[0]).setData({
+        Firestore.instance.collection('users').document(user.displayName.split('학')[0]).setData({
           'hakbun' : user.email.split('@')[0],
           'name' : user.displayName.split('학')[0],
           'photoUrl' : user.photoUrl,
