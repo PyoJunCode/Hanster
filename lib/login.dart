@@ -81,7 +81,7 @@ class _loginPageState extends State<loginPage> {
             Container(
               width: 280,
               height: 130,
-              child: Image.asset('assets/images/Startlogo.png', scale: 0.8,),
+              child: Image.asset('assets/images/Startlogo.png', scale: 0.6,),
             ),
 
             Padding(padding: const EdgeInsets.all(5)),
