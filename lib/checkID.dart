@@ -55,7 +55,7 @@ class checkPage extends StatelessWidget {
                                         ),
                                         Container(
                                             alignment: Alignment.topRight,
-                                            child: Image.asset('assets/images/book.png')),
+                                            child: Image.asset('assets/images/book.png', scale: 0.6,)),
                                       ],
                                     )
                                   ),

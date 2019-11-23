@@ -45,11 +45,11 @@ class _menuPageState extends State<menuPage> {
                   alignment: AlignmentDirectional.center,
                   children: <Widget>[
                     CircleAvatar(
-                      radius: 42.0,
+                      radius: 22.0,
                       backgroundColor: Colors.white,
                     ),
                     CircleAvatar(
-                      radius: 40.0,
+                      radius: 20.0,
                       backgroundImage: NetworkImage(widget.user.photoUrl),
                     ),
                     Container(
@@ -348,7 +348,8 @@ class _menuPageState extends State<menuPage> {
       if(isInt(cont[i]) == true) i++;
       else break;
     }
-    String cont_f = cont.split(cont[i-1])[1].trim();
+    String contf = cont.split(cont[i-1]+' ')[1].trim();
+    print(cont);
     return  Container(
       width: MediaQuery.of(context).size.width*1.0,
       alignment: Alignment.topLeft,
@@ -364,7 +365,7 @@ class _menuPageState extends State<menuPage> {
               ),
               Text('미분류' ,style: TextStyle(fontFamily: 'Nanumsquare',color: Color(0xff7896EA), fontWeight: FontWeight.bold),),
               Text(' | '),
-              Text(cont_f,style: TextStyle(fontFamily: 'Nanumsquare',color: Color(0xff000000)),)
+              Text(contf,style: TextStyle(fontFamily: 'Nanumsquare',color: Color(0xff000000)),)
             ],
           )
         ],

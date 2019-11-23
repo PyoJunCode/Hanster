@@ -9,6 +9,7 @@ import 'package:http/http.dart';
 import 'package:html/parser.dart';
 import 'package:html/dom.dart' as Dom;
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class writeQnaPage extends StatefulWidget {
   final FirebaseUser user;
@@ -269,8 +270,26 @@ class _writeQnaState extends State<writeQnaPage> {
                   'writer' : widget.user.displayName,
                   'comments' : '0',
                 });
+                Alert(
+                  context: context,
+                  title: "글이 등록되었습니다.",
+                  style: AlertStyle(isCloseButton: false),
+                  buttons: [
+                    DialogButton(
+                      child: Text(
+                        "확인",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () {
 
-                check(context, widget.user, widget.select, Documentid);
+                        Navigator.of(context, rootNavigator: true).pop();
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => qnaPage(widget.user, widget.select)));
+                      },
+                      color: Color.fromRGBO(183, 194, 243, 1.0),
+                      radius: BorderRadius.circular(10.0),
+                    ),
+                  ],
+                ).show();
               },
             ),)
 

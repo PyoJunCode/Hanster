@@ -471,9 +471,7 @@ class _CreatePageState extends State<CreatePage> {
             ),
             Positioned(bottom:10, right:0,child: FlatButton(
               child: Text("등록 > ", style: TextStyle(fontFamily: 'Nanumsquare',color: Color(0XFFF9BE06), fontSize: 25, fontWeight: FontWeight.bold)),
-//                      color: Color(0XFFF9BE06),
               color: Colors.white,
-//                      textColor: Colors.white
               onPressed: () {
                 time = "$time1~$time2";
                 print(time);
