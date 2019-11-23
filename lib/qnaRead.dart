@@ -18,7 +18,7 @@ class QnADetail extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text("Detail")),
+      appBar: buildAppBar(context),
       body: buildbody(context),
       backgroundColor: Colors.white,
 
@@ -52,7 +52,7 @@ class QnADetail extends StatelessWidget {
                                   child: Stack(
                                     children: <Widget>[
                                       Text(postList['time'], style: TextStyle(color:Color(0XFFA7A9AC)),),
-                                      Positioned(top: 20, child: Text(postList['title'], style: TextStyle(fontSize: 20, color:Color(0XFF939598)),)),
+                                      Positioned(top: 20, child: Text(postList['title'], style: TextStyle(fontSize: 20, color: Colors.black ),)),
                                       Positioned(right:10, top: 20,child: Text("댓글 "+snapshot.data.documents[0]['comments'], style: TextStyle(fontSize: 15, color: Color(0xFFF9BE06), ),textAlign: TextAlign.right,)),
                                     ],
                                   ),
@@ -61,10 +61,18 @@ class QnADetail extends StatelessWidget {
                             ),
                             SingleChildScrollView(
                               child: Container(
+
                                 height: MediaQuery.of(context).size.height*0.25,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(25.0),
-                                  child: Text(postList['qabout'], style: TextStyle(fontSize: 15),),
+                                  padding: const EdgeInsets.only(top :15.0, left: 15.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+
+                                      Text(postList['contents'], style: TextStyle(fontSize: 15),textAlign: TextAlign.left,),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -108,7 +116,7 @@ class QnADetail extends StatelessWidget {
                                     child: Container(
                                         height: MediaQuery.of(context).size.height*0.3,
 
-                                        child: ListView(  //이 예제는 그냥 데이터 가져와서 리스트뷰만드는 코드
+                                        child: ListView(
                                           shrinkWrap: true,
                                           children: snapshot.data.documents.map((DocumentSnapshot document) {
 
@@ -210,6 +218,37 @@ class QnADetail extends StatelessWidget {
             ),
           );
         }
+    );
+  }
+
+  buildAppBar(context) {
+    return AppBar(
+      centerTitle: true,
+      title:  Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Image.asset('assets/images/qnaLogo.png' , height: 30,),
+//          Icon(Icons.question_answer,color: Colors.yellow,size: 30,),
+//          Padding(padding: EdgeInsets.only(left: 10),),
+//          Text('QnA', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
+        ],
+      ),
+//          title: Text("Study Group"),
+      leading: IconButton(
+          color: Colors.white,
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: (){
+            Navigator.pop(context);
+          }),
+      actions: <Widget>[
+        IconButton(
+          color: Colors.white,
+          icon: Icon(Icons.menu),
+          onPressed: ()=>{
+          },
+        ),
+      ],
     );
   }
 
