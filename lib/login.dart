@@ -84,13 +84,10 @@ class _loginPageState extends State<loginPage> {
             Container(
               width: 280,
               height: 130,
-              child: Image.asset('assets/images/H_mainlo.png', scale: 0.8,),
+              child: Image.asset('assets/images/StartLogo.png', scale: 0.8,),
             ),
 
             Padding(padding: const EdgeInsets.all(5)),
-            Text('한   동   에   서   의   공   부   추   구', style: TextStyle(fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFFffffff)),),
 
             Padding(padding: const EdgeInsets.all(60)),
 

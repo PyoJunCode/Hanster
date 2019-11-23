@@ -362,6 +362,8 @@ class _menuPageState extends State<menuPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 32.0),
               ),
+              Text('미분류' ,style: TextStyle(fontFamily: 'Nanumsquare',color: Color(0xff7896EA), fontWeight: FontWeight.bold),),
+              Text(' | '),
               Text(cont_f,style: TextStyle(fontFamily: 'Nanumsquare',color: Color(0xff000000)),)
             ],
           )
