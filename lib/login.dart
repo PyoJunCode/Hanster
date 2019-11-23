@@ -77,14 +77,11 @@ class _loginPageState extends State<loginPage> {
           children: <Widget>[
             Padding(padding: const EdgeInsets.all(90)),
 
-            Text('언제까지 공부, 혼자 할래?', style: TextStyle(fontSize: 26,
-                fontWeight: FontWeight.bold,color: const Color(0xFFffffff))),
-            Padding(padding: const EdgeInsets.all(7)),
 
             Container(
               width: 280,
               height: 130,
-              child: Image.asset('assets/images/StartLogo.png', scale: 0.8,),
+              child: Image.asset('assets/images/Startlogo.png', scale: 0.8,),
             ),
 
             Padding(padding: const EdgeInsets.all(5)),
