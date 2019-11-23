@@ -167,7 +167,7 @@ class _menuPageState extends State<menuPage> {
                           child: ListView.builder(
                               itemCount: 5,
                               itemBuilder: (BuildContext context, int index)  {
-                                // print(parseLinks);
+
                                 return parseLinks[index].split(']')[1].contains('[')? tempForList(parseLinks[index]): tempFordiffer(parseLinks[index]);
                               }
                           )
@@ -349,7 +349,7 @@ class _menuPageState extends State<menuPage> {
       else break;
     }
     String contf = cont.split(cont[i-1]+' ')[1].trim();
-    print(cont);
+
     return  Container(
       width: MediaQuery.of(context).size.width*1.0,
       alignment: Alignment.topLeft,

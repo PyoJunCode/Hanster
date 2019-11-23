@@ -51,38 +51,26 @@ class _assignState extends State<assign> {
           backgroundColor: new Color(0xffB7C2F3),
           //elevation: 0.0,
           centerTitle: true,
-          leading:
-          new IconButton(
-            icon: Icon(Icons.arrow_back_ios,color: Colors.white,size: 33.0,),
-            onPressed: (){
-              Navigator.pop(context);
-            },
-          ),
+          leading: IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: (){
+                Navigator.pop(context);
+              }),
           title:Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(padding: const EdgeInsets.only(top:16.0),),
-              Image.asset('assets/images/assignment_image.png', height: 35,),
+              Image.asset('assets/images/assignment_image.png', height: 30,),
             ],
           ),
-          actions:
-
-          <Widget>[
-            PopupMenuButton(
-
-              icon: Icon(Icons.menu,color: Colors.white,size: 37.0,),
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Text("QnA"),
-                ),
-                PopupMenuItem(
-                  child: Text("스터디모집 "),
-                ),
-                PopupMenuItem(
-                  child: Text("과제관리 "),
-                ),
-              ],
+          actions: <Widget>[
+            IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.menu),
+              onPressed: ()=>{
+              },
             ),
           ],
           bottom: PreferredSize(

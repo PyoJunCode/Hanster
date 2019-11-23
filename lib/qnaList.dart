@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hanster_app/qnaRead.dart';
 import 'package:hanster_app/qnaSubject.dart';
 import 'package:hanster_app/qnaWrite.dart';
 
@@ -326,8 +327,8 @@ class postRow extends StatelessWidget {
 
     final subjectCard = GestureDetector(
         onTap: () {
-//          Navigator.push(context, MaterialPageRoute(
-//              builder: (context) => qnaPage(user, subject)));subject
+          Navigator.push(context, MaterialPageRoute(
+              builder: (context) => QnADetail(postList)));
         },
         child: Container(
 
