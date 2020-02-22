@@ -70,7 +70,7 @@ class QnADetail extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
 
-                                      Text(postList['contents'], style: TextStyle(fontSize: 15),textAlign: TextAlign.left,),
+                                      Expanded(child: Text(postList['contents'], style: TextStyle(fontSize: 15),textAlign: TextAlign.left,)),
                                     ],
                                   ),
                                 ),
