@@ -1,4 +1,5 @@
 # hanster_app
+## 최종 정리사항은 zip파일을 참고하세요.
 
 ## **10/12**
 + root.dart, login.dart, checkID.dart, front.dart 추가.
